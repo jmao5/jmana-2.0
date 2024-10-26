@@ -1,51 +1,45 @@
-'use client';
+// src/components/common/Header.tsx
+"use client";
 
-import Link from 'next/link';
-import { useAuthStore } from '@/lib/auth/auth.store';
-import { Button } from '@/components/ui/Button';
+import { useAuthStore } from "@/lib/store/auth.store";
+import { useThemeStore } from "@/lib/store/theme.store";
+import Link from "next/link";
 
 export default function Header() {
+  const { theme, setTheme } = useThemeStore();
   const { user, logout } = useAuthStore();
 
   return (
-    <header className="border-b bg-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+    <header className="sticky top-0 z-50 border-b bg-light-main dark:bg-dark-main">
+      <div className="app-container flex h-16 items-center justify-between">
         <Link href="/" className="text-xl font-bold">
-          로고
+          Logo
         </Link>
-        
-        <nav className="flex items-center space-x-4">
+
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2"
+          >
+            {theme === "dark" ? "🌙" : "☀️"}
+          </button>
+
           {user ? (
-            <>
-              <Link href="/discover">
-                발견
-              </Link>
-              <Link href="/profile">
-                프로필
-              </Link>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => logout()}
-              >
-                로그아웃
-              </Button>
-            </>
+            <button
+              onClick={() => logout()}
+              className="rounded-full bg-point px-4 py-2 text-white"
+            >
+              로그아웃
+            </button>
           ) : (
-            <>
-              <Link href="/login">
-                <Button variant="outline" size="sm">
-                  로그인
-                </Button>
-              </Link>
-              <Link href="/signup">
-                <Button size="sm">
-                  회원가입
-                </Button>
-              </Link>
-            </>
+            <Link
+              href="/login"
+              className="rounded-full bg-point px-4 py-2 text-white"
+            >
+              로그인
+            </Link>
           )}
-        </nav>
+        </div>
       </div>
     </header>
   );
