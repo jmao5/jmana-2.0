@@ -1,10 +1,10 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NEXT_PUBLIC_API_URL: string;
-      NEXT_PUBLIC_ENV: 'development' | 'production' | 'test';
+      NEXT_PUBLIC_API_URL: string
+      NEXT_PUBLIC_ENV: 'development' | 'production' | 'test'
     }
   }
 }
 
-export {};
+export {}
