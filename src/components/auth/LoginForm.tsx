@@ -1,40 +1,40 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useLogin } from '@/lib/api/mutations';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useLogin } from '@/lib/api/mutations'
 
 export function LoginForm() {
-  const router = useRouter();
-  const login = useLogin();
+  const router = useRouter()
+  const login = useLogin()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-  });
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      await login.mutateAsync(formData);
-      router.push('/discover');
+      await login.mutateAsync(formData)
+      router.push('/discover')
     } catch (error) {
-      console.error('로그인 실패:', error);
+      console.error('로그인 실패:', error)
     }
-  };
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
+    const { name, value } = e.target
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }));
-  };
+      [name]: value,
+    }))
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label 
-          htmlFor="email" 
+        <label
+          htmlFor="email"
           className="block text-sm font-medium text-gray-700"
         >
           이메일
@@ -52,8 +52,8 @@ export function LoginForm() {
       </div>
 
       <div>
-        <label 
-          htmlFor="password" 
+        <label
+          htmlFor="password"
           className="block text-sm font-medium text-gray-700"
         >
           비밀번호
@@ -78,5 +78,5 @@ export function LoginForm() {
         {login.isPending ? '로그인 중...' : '로그인'}
       </button>
     </form>
-  );
+  )
 }

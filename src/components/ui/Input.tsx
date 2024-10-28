@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { InputHTMLAttributes, forwardRef } from 'react';
-import classNames from 'classnames';
+import { InputHTMLAttributes, forwardRef } from 'react'
+import classNames from 'classnames'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  error?: string;
+  label?: string
+  error?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -23,16 +23,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             'w-full rounded-md border px-3 py-2 text-sm',
             'focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500',
             error && 'border-red-500',
-            className
+            className,
           )}
           {...props}
         />
-        {error && (
-          <p className="text-sm text-red-500">{error}</p>
-        )}
+        {error && <p className="text-sm text-red-500">{error}</p>}
       </div>
-    );
-  }
-);
+    )
+  },
+)
 
-Input.displayName = 'Input';
+Input.displayName = 'Input'
