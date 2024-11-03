@@ -11,14 +11,73 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "light-main": "var(--light-main)",
-        "dark-main": "var(--dark-main)",
-        "light-gray": "var(--light-gray)",
-        "dark-gray": "var(--dark-gray)",
-        point: "var(--point-color)",
+        danger: {
+          DEFAULT: "#dc2626",
+          hover: "#b91c1c",
+          ring: "#f87171",
+        },
+        success: {
+          DEFAULT: "#22c55e",
+          hover: "#16a34a",
+          ring: "#4ade80",
+        },
+        warning: {
+          DEFAULT: "#facc15",
+          hover: "#eab308",
+          ring: "#fde047",
+        },
+
+        light: {
+          gray: "#d1d5db",
+          main: "#f8f8f8",
+          sub: "#ffffff",
+          point: {
+            DEFAULT: "#60d4de",
+            hover: "#3fb7c1",
+            ring: "#70e3ed",
+          },
+        },
+        dark: {
+          gray: "#9ca3af",
+          main: "#1f2544",
+          sub: "#121837",
+          point: {
+            DEFAULT: "#f9bd7d",
+            hover: "#f0aa60",
+            ring: "#ffc588",
+          },
+        },
+        gold: "#FBBF24",
+        silver: "#9ca3af",
+        bronze: "#854d0e",
+        disabled: "#93a3af",
+        confirm: "#10B981",
+        info: "#F9BD7D",
       },
-      spacing: {
-        "safe-bottom": "env(safe-area-inset-bottom)",
+      fontFamily: {
+        omyuPretty: ["omyu_pretty"],
+      },
+      boxShadow: {
+        nav: "0px -1px 4px 0px rgba(0, 0, 0, 0.25)",
+        bottom: "0px 1px 0px 0px #d1d5db",
+      },
+      borderWidth: {
+        DEFAULT: "1px",
+        0: "0",
+        1: "1px",
+        2: "2px",
+        3: "3px",
+        4: "4px",
+        5: "5px",
+        6: "6px",
+        7: "7px",
+        8: "8px",
+      },
+      zIndex: {
+        navbar: "50",
+        bottomSheet: "100",
+        toast: "110",
+        pwaInstallBanner: "120",
       },
     },
   },
