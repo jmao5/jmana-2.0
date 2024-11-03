@@ -1,82 +1,54 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useLogin } from '@/lib/api/mutations'
+import { useEffect } from 'react'
+import { getCookie } from 'cookies-next'
+import defaultOmokImage from '@/public/skins/defaultOmok.png'
+import Image from 'next/image'
 
-export function LoginForm() {
+const KAKAO_LOGIN_URL =
+  `https://kauth.kakao.com/oauth/authorize?` +
+  `response_type=code&` +
+  `client_id=${process.env.NEXT_PUBLIC_KAKAO_LOGIN_CLIENT_ID}&` +
+  `redirect_uri=${process.env.NEXT_PUBLIC_CLIENT_DEPLOY_ENDPOINT}` +
+  `/login/kakao/oauth`
+
+const LoginForm = () => {
   const router = useRouter()
-  const login = useLogin()
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  })
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    try {
-      await login.mutateAsync(formData)
-      router.push('/discover')
-    } catch (error) {
-      console.error('로그인 실패:', error)
+  useEffect(() => {
+    const token = getCookie('token')
+    if (token) {
+      router.replace('/')
     }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
+  }, [router])
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
+    <main className="flex h-full flex-col items-center justify-center p-2">
+      <section className="flex grow flex-col items-center justify-center text-center">
+        <div className="w-48 rounded-full bg-yellow-50">
+          <Image src={defaultOmokImage} className="p-4" alt="로고 이미지" />
+        </div>
+        <div className="mt-10">
+          <h1 className="text-3xl">취향저격 컨텐츠의 시작</h1>
+          <p className="mt-4 text-lg text-dark-gray">
+            당신의 취향에 맞는 만화와 소설을 <br />
+            발견하고 구독하는 특별한 경험
+          </p>
+        </div>
+      </section>
+      <section className="w-full justify-self-end p-4">
+        <a
+          className="relative flex w-full cursor-pointer select-none rounded-2xl bg-[#FFEB06] p-3"
+          href={KAKAO_LOGIN_URL}
         >
-          이메일
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          value={formData.email}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          placeholder="이메일을 입력하세요"
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="password"
-          className="block text-sm font-medium text-gray-700"
-        >
-          비밀번호
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          required
-          value={formData.password}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          placeholder="비밀번호를 입력하세요"
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={login.isPending}
-        className="w-full rounded-md bg-blue-600 py-2 px-4 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-      >
-        {login.isPending ? '로그인 중...' : '로그인'}
-      </button>
-    </form>
+          <p className="w-full text-center font-extrabold text-[#6A2346]">
+            카카오로 시작하기
+          </p>
+        </a>
+      </section>
+    </main>
   )
 }
+
+export default LoginForm

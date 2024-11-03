@@ -2,46 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --light-main: #ffffff;
-  --dark-main: #1a1a1a;
-  --light-gray: #9ca3af;
-  --dark-gray: #4b5563;
-  --point-color: #3b82f6;
-}
-
-@layer base {
-  html {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  body {
-    @apply text-black dark:text-white;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
 @layer components {
   .app-container {
-    @apply mx-auto w-full max-w-screen-2xl px-4;
-  }
-}
-
-@layer utilities {
-  .safe-top {
-    padding-top: env(safe-area-inset-top);
-  }
-
-  .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-
-  .safe-left {
-    padding-left: env(safe-area-inset-left);
-  }
-
-  .safe-right {
-    padding-right: env(safe-area-inset-right);
+    @apply absolute inset-0 m-auto h-full w-full max-w-md 
+    2xl:h-[90%] 
+    2xl:rounded-[1rem] 
+    2xl:border-[0.3rem] 
+    border-pink-100
+    2xl:overflow-hidden 
+    2xl:box-content 
+    2xl:shadow-[0px_10px_10px_-5px_rgba(0,0,0,0.04),0px_20px_25px_-5px_rgba(0,0,0,0.1)] 2xl:max-w-[640px];
   }
 }

@@ -21,12 +21,6 @@ const config: Config = {
           hover: '#16a34a',
           ring: '#4ade80',
         },
-        warning: {
-          DEFAULT: '#facc15',
-          hover: '#eab308',
-          ring: '#fde047',
-        },
-
         light: {
           gray: '#d1d5db',
           main: '#f8f8f8',

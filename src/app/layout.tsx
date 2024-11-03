@@ -2,12 +2,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Providers } from './providers'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-})
+import { Pretendard } from '@/public/font'
 
 export const metadata: Metadata = {
   title: {
@@ -35,9 +30,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
-        <Providers>{children}</Providers>
+    <html
+      lang="ko"
+      suppressHydrationWarning
+      className={`${Pretendard.className}`}
+    >
+      <body className={`${Pretendard.className} antialiased`}>
+        <Providers>
+          <div className="app-container flex flex-col bg-light-main dark:bg-dark-main">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   )
