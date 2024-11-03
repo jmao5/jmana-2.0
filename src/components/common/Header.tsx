@@ -1,13 +1,13 @@
 // src/components/common/Header.tsx
-"use client";
+'use client'
 
-import { useAuthStore } from "@/lib/store/auth.store";
-import { useThemeStore } from "@/lib/store/theme.store";
-import Link from "next/link";
+import { useAuthStore } from '@/lib/store/auth.store'
+import { useThemeStore } from '@/lib/store/theme.store'
+import Link from 'next/link'
 
 export default function Header() {
-  const { theme, setTheme } = useThemeStore();
-  const { user, logout } = useAuthStore();
+  const { theme, setTheme } = useThemeStore()
+  const { user, logout } = useAuthStore()
 
   return (
     <header className="sticky top-0 z-50 border-b bg-light-main dark:bg-dark-main">
@@ -18,10 +18,10 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="p-2"
           >
-            {theme === "dark" ? "🌙" : "☀️"}
+            {theme === 'dark' ? '🌙' : '☀️'}
           </button>
 
           {user ? (
@@ -42,5 +42,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

@@ -1,5 +1,5 @@
 // src/app/(auth)/signup/page.tsx
-import { SignupForm } from '@/components/auth/SignupForm';
+import { SignupForm } from '@/components/auth/SignupForm'
 
 export default function SignupPage() {
   return (
@@ -10,5 +10,5 @@ export default function SignupPage() {
       </div>
       <SignupForm />
     </div>
-  );
+  )
 }

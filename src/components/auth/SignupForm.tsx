@@ -1,8 +1,8 @@
 // src/components/auth/SignupForm.tsx
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from 'next/link'
+import { useState } from 'react'
 
 export function SignupForm() {
   // const router = useRouter();
@@ -11,26 +11,29 @@ export function SignupForm() {
     password: '',
     passwordConfirm: '',
     name: '',
-  });
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
+    const { name, value } = e.target
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }));
-  };
+      [name]: value,
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     // 회원가입 로직 구현 예정
-    console.log('회원가입 시도:', formData);
-  };
+    console.log('회원가입 시도:', formData)
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700"
+        >
           이메일
         </label>
         <input
@@ -45,7 +48,10 @@ export function SignupForm() {
       </div>
 
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-gray-700"
+        >
           이름
         </label>
         <input
@@ -60,7 +66,10 @@ export function SignupForm() {
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700"
+        >
           비밀번호
         </label>
         <input
@@ -75,7 +84,10 @@ export function SignupForm() {
       </div>
 
       <div>
-        <label htmlFor="passwordConfirm" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="passwordConfirm"
+          className="block text-sm font-medium text-gray-700"
+        >
           비밀번호 확인
         </label>
         <input
@@ -103,5 +115,5 @@ export function SignupForm() {
         </Link>
       </p>
     </form>
-  );
+  )
 }

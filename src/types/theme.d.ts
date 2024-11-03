@@ -1,2 +1,2 @@
 // src/types/theme.d.ts
-export type Theme = "light" | "dark";
+export type Theme = 'light' | 'dark'

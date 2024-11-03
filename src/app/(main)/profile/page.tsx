@@ -1,10 +1,10 @@
 // src/app/(main)/profile/page.tsx
-"use client";
+'use client'
 
-import { useAuthStore } from "@/lib/store/auth.store";
+import { useAuthStore } from '@/lib/store/auth.store'
 
 export default function ProfilePage() {
-  const user = useAuthStore((state) => state.user);
+  const user = useAuthStore((state) => state.user)
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -26,5 +26,5 @@ export default function ProfilePage() {
         <div className="text-center text-gray-600">로그인이 필요합니다.</div>
       )}
     </div>
-  );
+  )
 }
