@@ -44,3 +44,23 @@ export interface DiscoverFeedResponse {
   page: number
   hasMore: boolean
 }
+
+// API 응답 타입 정의
+export interface KakaoAuthResponse {
+  success: boolean
+  data: {
+    userId: string
+    newUser: boolean
+    token: {
+      accessToken: string
+      refreshToken: string
+      accessTokenExpireIn: number
+    }
+  }
+}
+
+// 요청 변수 타입 정의
+export interface KakaoAuthVariables {
+  authorizationCode: string
+  redirectUri: string
+}
